@@ -329,3 +329,26 @@ h2 .film-title-wrapper a {
 .film-detail-content .headline-2 small a {
     color: #89a;
 }
+
+li.track-list p{
+    font-family: Graphik-Regular-Web, sans-serif;
+    color: #9ab;
+}
+
+li.track-list{
+    display: flex;
+    justify-content: space-between;
+}
+
+.track-cover{
+    width: 40px;
+    height: 40px;
+    border-radius: 7%;
+    margin-right: 15px;
+    margin-left: -37px;
+}
+
+.track-regroup{
+    display: flex;
+    align-items: center;
+}

@@ -48,6 +48,12 @@ if ($resultArtist->num_rows > 0) {
     exit;
 }
 
+// Récupérer la tracklist de l'album
+$stmtTracks = $conn->prepare("SELECT id, name, duration, track_number FROM track WHERE album_id = ? ORDER BY id");
+$stmtTracks->bind_param("i", $albumId);
+$stmtTracks->execute();
+$resultTracks = $stmtTracks->get_result();
+
 $date = new DateTime($album['release_date']);
 $formattedDate = $date->format('d F Y');
 ?>
@@ -92,6 +98,28 @@ $formattedDate = $date->format('d F Y');
                         <li class="dMJfv"><?= htmlspecialchars($formattedDate) ?></li>
                     </ul>
                 </div>
+            </section>
+            <section id="album-tracks" class="section">
+                <h2 class="section-heading">Tracklist</h2>
+                <ul class="track-list">
+                    <?php if ($resultTracks->num_rows > 0): ?>
+                        <?php while ($track = $resultTracks->fetch_assoc()): ?>
+                            <li class="track-list">
+                                <div class="track-regroup"><img src="<?=htmlspecialchars($album['cover']) ?>" alt="Cover of <?=htmlspecialchars($track['name']) ?>" class="track-cover" />
+                                    <p class="track-number"><?=htmlspecialchars($track['track_number']) ?>.&nbsp&nbsp<?= htmlspecialchars($track['name']) ?></p>
+                                </div>
+                                <?php
+                                $duration = intval($track['duration']);
+                                $minutes = floor($duration / 60);
+                                $seconds = $duration % 60;
+                                ?>
+                                <p class="track-name"><?= sprintf('%02d:%02d', $minutes, $seconds) ?></p>
+                            </li>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <li>Aucun résultat trouvé.</li>
+                    <?php endif; ?>
+                </ul>
             </section>
         </div>
     </div>
