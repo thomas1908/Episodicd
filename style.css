@@ -352,3 +352,63 @@ li.track-list{
     display: flex;
     align-items: center;
 }
+
+.css-c1x3e4 {
+    width: 24px;
+    height: 24px;
+    display: block;
+    line-height: 1em;
+    flex-shrink: 0;
+    color: currentcolor;
+    fill: currentcolor;
+}
+
+#album-tracks .section-heading{
+    display :flex;
+    justify-content: space-between;
+}
+
+#album-tracks .section-heading svg{
+    margin-top: 17.42px;
+    margin-right: 10.665px;
+}
+
+.artist-discography{
+    margin-top: 20px;
+}
+
+ul.discography-list-horizontal{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+
+li.discography-list-horizontal img{
+    width: 200px;
+    height: auto;
+    border-radius: clamp(2px, 2.66667%, 8px) / clamp(2px, 1.77778%, 8px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+
+li.discography-list-horizontal img:hover{
+    border: 1px solid #def;
+}
+
+h2.artist-album-title{
+    font-family: Graphik-Regular-Web, sans-serif;
+    font-size: 1em;
+    font-weight: 400;
+    color: #9ab;
+    letter-spacing: .075em;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    margin: 2% 2% 2% 0;
+}
+
+li.discography-list-horizontal{
+    width: 200px;
+}

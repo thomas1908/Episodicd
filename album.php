@@ -100,7 +100,13 @@ $formattedDate = $date->format('d F Y');
                 </div>
             </section>
             <section id="album-tracks" class="section">
-                <h2 class="section-heading">Tracklist</h2>
+                <div class="section-heading">
+                    <h2>Titre</h2>
+                    <svg viewBox="0 0 24 24" focusable="false" class="chakra-icon css-c1x3e4" data-testid="ClockOutlinedIcon">
+                        <path d="M11.335 8v4.275l3.195 3.195.94-.94-2.805-2.805V8h-1.33Z"></path>
+                        <path fill-rule="evenodd" d="M4 12c0-5.138 2.862-8 8-8 5.137 0 8 2.862 8 8 0 5.137-2.863 8-8 8-5.138 0-8-2.863-8-8Zm1.333 0c0 4.424 2.243 6.667 6.667 6.667 4.424 0 6.667-2.243 6.667-6.667 0-4.424-2.243-6.667-6.667-6.667-4.424 0-6.667 2.243-6.667 6.667Z" clip-rule="evenodd"></path>
+                    </svg>
+                </div>
                 <ul class="track-list">
                     <?php if ($resultTracks->num_rows > 0): ?>
                         <?php while ($track = $resultTracks->fetch_assoc()): ?>

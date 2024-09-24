@@ -23,6 +23,11 @@ if (isset($_GET['id'])) {
     exit;
 }
 
+$stmtAlbums = $conn->prepare("SELECT id, name, cover FROM albums WHERE artist_id = ?");
+$stmtAlbums->bind_param("i", $artistId);
+$stmtAlbums->execute();
+$resultAlbums = $stmtAlbums->get_result();
+
 $date = new DateTime($artist['birth_date']);
 $formattedDate = $date->format('d F Y');
 ?>
@@ -60,6 +65,23 @@ $formattedDate = $date->format('d F Y');
                         <li class="dMJfv"><?= htmlspecialchars($formattedDate) ?></li>
                     </ul>
                 </div>
+            </section>
+            <section class="artist-discography">
+                <h2 class="section-heading">Discographie</h2>
+                <ul class="discography-list-horizontal">
+                    <?php if ($resultAlbums->num_rows > 0): ?>
+                        <?php while ($rowAlbums = $resultAlbums->fetch_assoc()): ?>
+                            <li class="discography-list-horizontal">
+                                <a href="album.php?id=<?= htmlspecialchars($rowAlbums['id'])?>" data-original-title="<?= htmlspecialchars($rowAlbums['name'])?>">
+                                <img src="<?= htmlspecialchars($rowAlbums['cover'], ENT_QUOTES, 'UTF-8')?>" alt="Cover of <?= htmlspecialchars($rowAlbums['name'], ENT_QUOTES, 'UTF-8')?>">
+                                </a>
+                                <a href="album.php?id=<?= htmlspecialchars($rowAlbums['id'])?>"><h2 class="artist-album-title"><?= htmlspecialchars($rowAlbums['name'])?></h2></a>
+                            </li>
+                            <?php endwhile; ?>
+                    <?php else: ?>
+                        <li>Aucun résultat trouvé.</li>
+                    <?php endif; ?>
+                </ul>
             </section>
         </div>
     </div>
