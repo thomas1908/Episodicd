@@ -6,6 +6,16 @@
         url('font/Graphik-Regular.svg') format('svg');
 }  
 
+@font-face {
+    font-family: "TiemposTextWeb-Semibold";
+    src: url("https://db.onlinewebfonts.com/t/22b044be38a057a10bf4b457c31a1729.eot");
+    src: url("https://db.onlinewebfonts.com/t/22b044be38a057a10bf4b457c31a1729.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/22b044be38a057a10bf4b457c31a1729.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/22b044be38a057a10bf4b457c31a1729.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/22b044be38a057a10bf4b457c31a1729.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/22b044be38a057a10bf4b457c31a1729.svg#TiemposText-Semibold")format("svg");
+}
+
 body {
     background-color: #2c3440;
     background-image: linear-gradient(to bottom, 
@@ -56,7 +66,6 @@ header section {
 .section-heading{
     margin: 0 auto;
     position: relative;
-    width: 950px;
     border-bottom: 1px solid #456;
     color: #9ab;
     font-family: Graphik-Regular-Web, sans-serif;
@@ -79,10 +88,6 @@ header section {
     padding: 30px 0;
 }
 
-.cover-image{
-    display: block;
-}
-
 ul{
     list-style: none;
 }
@@ -98,10 +103,20 @@ ul{
     z-index: 0;
 }
 
+.image-poster-list-horizontal:nth-child(n+5){
+    margin-top: 20px;
+}
+
 .poster-list-horizontal img{
     width: 200px;
     height: auto;
     border-radius: clamp(2px, 2.66667%, 8px) / clamp(2px, 1.77778%,8px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border: 1px solid rgba(0, 0, 0, 0); 
+}
+
+.poster-list-horizontal img:hover{
+    border: 1px solid #def;
 }
 
 .poster-list-horizontal a{
@@ -110,7 +125,7 @@ ul{
 }
 
 .cover-image{
-    width: 40%;
+    width: 25%;
     height: auto;
     border-radius: clamp(2px, 2.66667%, 8px) / clamp(2px, 1.77778%,8px);
     margin-bottom: 2%;
@@ -131,11 +146,6 @@ ul{
     letter-spacing: .075em;
 }
 
-.album-content{
-    font-size: 1.17em;
-    font-weight: bold;
-}
-
 .artist-container {
     display: flex;
     align-items: center;
@@ -153,4 +163,169 @@ ul{
     margin-top: -4px;
     line-height: 24px;
     text-align: justify;
+}
+
+.album-content,.artist-content{
+    font-size: 1.17em;
+    margin : 10px;
+}
+
+#album-details, #artist-details{
+    display: flex;
+}
+
+.album-content, .artist-content{
+    margin-left: 4%;
+}
+
+.album-content h2, .artist-content h2{
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.dMJfv+.dMJfv:before {
+    content: "|";
+    margin: 0 5px;
+}
+
+.dMJfv {
+    align-items: center;
+    display: flex;
+}
+
+.css-1s16397 {
+    display: flex;
+    margin-top: 11px;
+    padding-left: 0px;
+}
+
+.artist-content-wrap, .album-content-wrap{
+    margin: 0 auto;
+    width: 1400px;
+}
+
+.css-1s16398 {
+    display: flex;
+    margin-top: 98px;
+    padding-left: 0px;
+}
+
+.search-bar-container {
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+.search-bar {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #9ab;
+    border-radius: 8px;
+    background-color: #1c2027;
+    color: #fff;
+}
+
+.search-button {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #9ab;
+    background-color: #2c3440;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #1c2027;
+}
+
+.result-name {
+    color: #9ab;
+}
+
+.sidebar{
+    float: right;
+    margin-right: 0;
+    width: 230px;
+}
+
+.content-wrap-search{
+    margin: 0 auto;
+    width: 950px;
+    display: flex;
+}
+
+#search-results{
+    float: left;
+    width: 670px;
+    margin-right: 5%;
+}
+
+section#search-filter.section ul{
+    padding: 0;
+}
+
+section#search-filter.section ul li{
+    line-height: 1.38461538;
+}
+
+#search-filter li.selected a {
+    background: #2c3440;
+    color: #fff;
+    font-family: Graphik-Semibold-Web, sans-serif;
+    font-weight: 400;
+}
+
+#search-filter li a {
+    color: #9ab;
+    display: block;
+    padding: 6px 10px;
+    font-family: Graphik-Regular-Web, sans-serif;
+}
+
+.image-poster-list-horizontal-search{
+    display: flex;
+    flex-direction: row;
+}
+
+.film-detail-content {
+    float: right;
+    width: 580px;
+    margin: 2px 0 0 20px;
+}
+
+.film-title, .headline-2 {
+    font-family: TiemposTextWeb-Semibold, Georgia, serif;
+    font-size: 1.69230769rem;
+    font-weight: 400;
+    margin: 0 0 10px;
+    color: #fff;
+    line-height: 1.2;
+    overflow-wrap: break-word;
+}
+
+h2 .film-title-wrapper a {
+    color: #fff;
+    margin-right: 5px;
+}
+
+#result-list>li {
+    border-bottom: 1px solid #2c3440;
+    overflow: hidden;
+    padding: 15px 0;
+}
+
+#result-list {
+    margin-top: -5px;
+}
+
+.headline-2>*>.metadata{
+    font-size: 1.38461538rem;
+    color: #89a;
+    font-family: Graphik-Light-Web, sans-serif;
+    font-weight: 400;
+}
+
+.film-detail-content .headline-2 small a {
+    color: #89a;
 }

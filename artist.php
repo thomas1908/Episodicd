@@ -31,6 +31,7 @@ $formattedDate = $date->format('d F Y');
 <head>
     <title>Détails de l'artiste - <?= htmlspecialchars($artist['name']) ?></title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/webp" href="logo Episodicd.webp" />
 </head>
 <body>
     <header>
@@ -39,18 +40,26 @@ $formattedDate = $date->format('d F Y');
                 <img class='logo' src="logo Episodicd.webp" alt="Episodicd">
                 <a href="/Episodicd" class="logo replace">Episodicd</a>
             </h1>
+            <div class="search-bar-container">
+                <form action="search.php" method="GET">
+                    <input type="text" name="query" class="search-bar" placeholder="Rechercher un album ou un artiste..." autocomplete="off">
+                    <button type="submit" class="search-button">Rechercher</button>
+                </form>
+            </div>
         </section>
     </header>
     <div id="content" class="site-body">
-        <div class="content-wrap">
+        <div class="artist-content-wrap">
+            <h2 class="section-heading"><?= htmlspecialchars($artist['name']) ?></h2>
             <section id="artist-details" class="section">
-                <h2 class="section-heading"><?= htmlspecialchars($artist['name']) ?></h2>
                 <img  class="cover-image" src="<?= htmlspecialchars($artist['photo'], ENT_QUOTES, 'UTF-8') ?>" alt="Photo de <?= htmlspecialchars($artist['name'], ENT_QUOTES, 'UTF-8') ?>">
-                <h3 class="artist-type">Genre: <?= htmlspecialchars($artist['genre']) ?></h3>
-                <h3 class="artist-birth">Date de naissance: <?= htmlspecialchars($formattedDate) ?></h3>
-                <h3 class="artist-nationality">Nationalité: <?= htmlspecialchars($artist['nationality']) ?></h3>
-                <h3>Biographie:</h3>
-                <p class="artist-biography"><?= nl2br(htmlspecialchars($artist['biography'])) ?></p>
+                <div class="artist-content">
+                    <h2><?= htmlspecialchars($artist['name']) ?></h2>
+                    <ul class="css-1s16398">
+                        <li class="dMJfv"><?= htmlspecialchars($artist['genre']) ?></li>
+                        <li class="dMJfv"><?= htmlspecialchars($formattedDate) ?></li>
+                    </ul>
+                </div>
             </section>
         </div>
     </div>
