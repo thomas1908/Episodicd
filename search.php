@@ -124,7 +124,7 @@ if (!empty($query)) {
                             </li>
                         <?php endwhile; ?>
                     <?php else: ?>
-                        <li>Aucun résultat trouvé.</li>
+                        <li class="zero-result">Aucun résultat trouvé.</li>
                     <?php endif; ?>
                 </ul>
             </section>
