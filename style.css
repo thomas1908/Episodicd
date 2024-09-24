@@ -21,8 +21,13 @@ header {
     height: 72px;
 }
 
+a{
+    text-decoration: none;
+}
+
 h1 a{
     font-size: 30px;
+    font-weight: bold;
     color: #fff;
     text-decoration: none;
 }
@@ -44,7 +49,7 @@ header section {
 .logo{
     width: 10%;
     height: 10%;
-    margin-top : 5px;
+    margin-top : 2px;
     margin-right: 15px;
 }
 
@@ -102,4 +107,50 @@ ul{
 .poster-list-horizontal a{
     display: block;
     border-radius: clamp(2px, 2.66667%, 8px) / clamp(2px, 1.77778%,8px);
+}
+
+.cover-image{
+    width: 40%;
+    height: auto;
+    border-radius: clamp(2px, 2.66667%, 8px) / clamp(2px, 1.77778%,8px);
+    margin-bottom: 2%;
+}
+
+#album-details, #artist-details{
+    color:#9ab;
+    font-family: Graphik-Regular-Web, sans-serif;
+}
+
+.album-artist:hover{
+    text-decoration: underline;
+}
+
+.album-artist{
+    color: #9ab;
+    font-family: Graphik-Regular-Web, sans-serif;
+    letter-spacing: .075em;
+}
+
+.album-content{
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
+.artist-container {
+    display: flex;
+    align-items: center;
+}
+
+.artist-cover {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.album-description, .artist-biography{
+    font-size: 14px;
+    margin-top: -4px;
+    line-height: 24px;
+    text-align: justify;
 }

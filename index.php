@@ -1,87 +1,63 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
+include 'connexion.php';
+
+// Requête SQL pour récupérer les données des différentes tables
+$sqlAlbums= "SELECT id, name, artist_id, cover FROM albums";
+$resultAlbums = $conn->query($sqlAlbums);
+
+$sqlArtist= "SELECT id_artist, name, photo FROM artist";
+$resultArtist = $conn->query($sqlArtist);
+?>
+
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Albums Spotify</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    .album {
-      display: inline-block;
-      margin: 20px;
-      text-align: center;
-    }
-    img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-    }
-  </style>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-<h1>Albums - Pray for Paris</h1>
-<div id="albums"></div>
-
-<script>
-  async function getAccessToken() {
-    const response = await fetch('https://accounts.spotify.com/api/token', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + btoa('0399d242d0f54a0ba4bf95ba7a310629:b6add34a9fbc45d1862730e2463739e4')
-      },
-      body: new URLSearchParams({
-        grant_type: 'client_credentials'
-      })
-    });
-
-    const data = await response.json();
-    return data.access_token;
-  }
-
-  async function fetchAlbums(token) {
-    const response = await fetch('https://api.spotify.com/v1/search?q=Pray+for+Paris&type=album', {
-      method: 'GET',
-      headers: {
-        'Authorization': 'Bearer ' + token
-      }
-    });
-
-    const data = await response.json();
-    return data.albums.items;
-  }
-
-  async function displayAlbums() {
-    try {
-      const token = await getAccessToken();
-      const albums = await fetchAlbums(token);
-      const albumsContainer = document.getElementById('albums');
-
-      albums.forEach(album => {
-        const albumElement = document.createElement('div');
-        albumElement.classList.add('album');
-
-        const albumTitle = document.createElement('h3');
-        albumTitle.textContent = album.name;
-
-        const albumImage = document.createElement('img');
-        albumImage.src = album.images[0].url;
-        albumImage.alt = album.name;
-
-        albumElement.appendChild(albumImage);
-        albumElement.appendChild(albumTitle);
-
-        albumsContainer.appendChild(albumElement);
-      });
-    } catch (error) {
-      console.error('Erreur lors de la récupération des albums :', error);
-    }
-  }
-  window.onload = displayAlbums;
-</script>
-
+    <header>
+        <section><!DOCTYPE html>
+            <h1 class="site-logo">
+                <img class='logo' src="logo Episodicd.webp" alt="Episodicd">
+                <a href="/Episodicd" class="logo replace">Episodicd</a>
+            </h1>
+        </section>
+    </header>
+    <div id="content" class="site-body">
+        <div class="content-wrap">
+            <section id="favourites" class="section">
+                <h2 class="section-heading">FAVORITE ALBUMS</h2>
+                <ul class="poster-list-horizontal">
+                    <?php if ($resultAlbums->num_rows > 0): ?>
+                        <?php while ($rowAlbums = $resultAlbums->fetch_assoc()): ?>
+                            <li>
+                                <a href="album.php?id=<?= htmlspecialchars($rowAlbums['id']) ?>" data-original-title="<?= htmlspecialchars($rowAlbums['name']) ?>">
+                                    <img src="<?= htmlspecialchars($rowAlbums['cover'], ENT_QUOTES, 'UTF-8') ?>" alt="Cover of <?= htmlspecialchars($rowAlbums['name'], ENT_QUOTES, 'UTF-8') ?>">
+                                </a>
+                            </li>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <li>Aucun album disponible.</li>
+                    <?php endif; ?>
+                </ul>
+            </section>
+            <section id="favourites" class="section">
+                <h2 class="section-heading">FAVORITE ARTIST</h2>
+                <ul class="poster-list-horizontal">
+                    <?php if ($resultArtist->num_rows > 0): ?>
+                        <?php while ($rowArtist = $resultArtist->fetch_assoc()): ?>
+                            <li>
+                                <a href="artist.php?id=<?= htmlspecialchars($rowArtist['id_artist']) ?>" data-original-title="<?= htmlspecialchars($rowArtist['name']) ?>">
+                                    <img src="<?= htmlspecialchars($rowArtist['photo'], ENT_QUOTES, 'UTF-8') ?>" alt="Cover of <?= htmlspecialchars($rowArtist['name'], ENT_QUOTES, 'UTF-8') ?>">
+                                </a>
+                            </li>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <li>Aucun album disponible.</li>
+                    <?php endif; ?>
+                </ul>
+            </section>
+        </div>
+    </div>
 </body>
 </html>

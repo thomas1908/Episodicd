@@ -1,14 +1,14 @@
 <?php
 $host = 'localhost';
+$port = 3308;
 $dbname = 'episodicd';
 $username = 'root';
-$password = '';
+$password = 'lulupopo17';
 
-// Créer la connexion
-$conn = new mysqli($host, $username, $password, $dbname);
+// Connexion a la db
+$conn = new mysqli($host, $username, $password, $dbname, port: $port);
 
-// Vérifier la connexion
+// verif de la connexion
 if ($conn->connect_error) {
     die("Connexion échouée: " . $conn->connect_error);
 }
-?>
