@@ -19,11 +19,14 @@
             .then(data => {
                 if (data.success) {
                     localStorage.setItem('session_id', data.session_id);
-                    localStorage.setItem('user_id', data.user_id);
+                    localStorage.setItem('username', data.username); // Make sure this line is here
                     window.location.href = 'index.php';
+                } else {
+                    console.error('Login failed:', data.message); // Log the error message if login fails
                 }
             })
             .catch(error => console.error('Erreur:', error));
+
         }
     </script>
 </head>

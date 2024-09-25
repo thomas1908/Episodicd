@@ -13,19 +13,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Vérifier les informations d'identification
-    $stmt = $conn->prepare("SELECT id, password_hash FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT username, password_hash FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        $stmt->bind_result($user_id, $password_hash);
+        $stmt->bind_result($username, $password_hash);
         $stmt->fetch();
 
         if (password_verify($password, $password_hash)) {
             $session_id = session_create_id();
-            $user_id = intval($user_id);
-            echo json_encode(['success' => true, 'message' => 'Connexion réussie', 'session_id' => $session_id, 'user_id' => $user_id]);
+            $username_storage = $username; // Ensure user ID is correctly set
+            echo json_encode(['success' => true, 'message' => 'Connexion réussie', 'session_id' => $session_id, 'username' => $username_storage]);
         } else {
             echo json_encode(['success' => false, 'message' => 'Mot de passe incorrect.']);
         }

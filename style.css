@@ -470,7 +470,7 @@ li.discography-list-horizontal{
 
 #profil-info{
     position: absolute;
-    right: 370;
+    right: 330;
     top: 19px;
 }
 
@@ -506,6 +506,7 @@ li.discography-list-horizontal{
 
 .profile-menu:hover .subnav {
     display: block; /* Afficher le menu au survol */
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 .avatar{
@@ -519,13 +520,20 @@ li.discography-list-horizontal{
 
 .avatar img{
     border-radius: 50%;
+    margin-left: 15px;
     margin-right: 10px;
     width: 40px;
     height: 40px;
 }
 
-#profil-info {
-    margin-top: -1.3%;
+div#profil-info {
+    margin-top: -0.5%;
+    width: 135.09px;
+}
+
+div#profil-info:hover{
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 .avatar p{
@@ -536,4 +544,8 @@ li.discography-list-horizontal{
 
 a.logo.replace{
     margin-top: 5px;
+}
+
+div.avatar{
+    padding : 0;
 }

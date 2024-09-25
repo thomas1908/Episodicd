@@ -8,6 +8,7 @@ include 'connexion.php';
 
 header('Content-Type: application/json'); // Définir le type de contenu
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];

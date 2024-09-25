@@ -79,7 +79,7 @@ $resultArtist = $conn->query($sqlArtist);
                         <li><a href="/thomas__pttr/following/">Network</a></li>
                         <li class="divider"><a href="/settings/">Settings</a></li>
                         <li><a href="/settings/subscriptions/">Subscriptions</a></li>
-                        <li id="sign-out"><a href="/Episodicd" onclick="localStorage.removeItem('session_id');">Sign Out</a></li>
+                        <li id="sign-out"><a href="/Episodicd" onclick="localStorage.removeItem('session_id'); localStorage.removeItem('user_id');">Sign Out</a></li>
                     </ul>
                 </div>
             </div>
