@@ -1,19 +1,23 @@
-const toggleMenu = document.querySelector('.toggle-menu');
-const subnav = document.querySelector('.subnav');
+const searchButton = document.getElementById('search-btn');
+const searchInput = document.getElementById('search-input');
+const searchIcon = document.getElementById('search-icon');
+const closeIcon = document.getElementById('close-icon');
 
-toggleMenu.addEventListener('mouseover', () => {
-    subnav.style.display = 'block';
+searchButton.addEventListener('click', () => {
+    searchInput.classList.toggle('visible');
+
+    if (searchInput.classList.contains('visible')) {
+        searchInput.focus();
+        searchIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+        
+    } else {
+        searchIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+    }
 });
 
-toggleMenu.addEventListener('mouseleave', () => {
-    subnav.style.display = 'none';
-});
-
-// Si vous souhaitez que le menu reste ouvert quand vous survolez, vous pouvez gérer cela avec des événements supplémentaires
-subnav.addEventListener('mouseenter', () => {
-    subnav.style.display = 'block';
-});
-
-subnav.addEventListener('mouseleave', () => {
-    subnav.style.display = 'none';
+document.getElementById('search-btn').addEventListener('click', function() {
+    const searchBarContainer = document.querySelector('.search-bar-container');
+    searchBarContainer.classList.toggle('open');
 });

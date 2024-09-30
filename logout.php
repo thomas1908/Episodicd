@@ -1,6 +1,5 @@
 <?php
-// Détruire la session de l'utilisateur
 session_start();
-session_destroy();
-header('Location: index.php');
-exit;
+session_destroy(); // Détruit toutes les données de session
+header("Location: index.php"); // Redirigez vers la page de connexion
+exit();

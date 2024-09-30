@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteBase /
+
+# Rediriger les requêtes vers index.php
+RewriteRule ^album/(.+)$ album/index.php?name=$1 [L,QSA]
+RewriteRule ^artist/(.+)$ artist/index.php?name=$1 [L,QSA]
+RewriteRule ^user/(.+)$ user/index.php?username=$1 [L,QSA]
+RewriteRule ^search/?$ search.php [QSA,L]
