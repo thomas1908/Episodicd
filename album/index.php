@@ -3,14 +3,12 @@ include('../functions.php');
 include('../connexion.php');
 include('../header.php');
 
-// Récupération de l'URL complète
 $url = $_SERVER['REQUEST_URI'];
 
-// Récupérer le nom de l'album après "/album/"
 $pathParts = explode('/album/', $url);
 if (isset($pathParts[1])) {
     $GetalbumName = trim($pathParts[1]);
-    $AlbumName = urldecode($GetalbumName); // Décode les espaces et autres caractères encodés
+    $AlbumName = urldecode($GetalbumName);
 } else {
     echo "Nom de l'album non spécifié.";
     exit;
@@ -33,7 +31,7 @@ $stmt->close();
 $artistId = $album['artist_id'];
 
 // Récupérer les informations de l'artiste
-$stmtArtist = $conn->prepare("SELECT 
+$stmtArtist = $conn->prepare("SELECT
     a.id_artist,
     a.name AS artist_name,
     a.photo,
@@ -41,9 +39,9 @@ $stmtArtist = $conn->prepare("SELECT
     a.nationality,
     a.birth_date,
     a.genre
-FROM 
+FROM
     artist a
-WHERE 
+WHERE
     a.id_artist = ?");
 $stmtArtist->bind_param("i", $artistId);
 $stmtArtist->execute();
